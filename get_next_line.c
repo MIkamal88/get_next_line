@@ -21,6 +21,7 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	n = read(fd, &buffer, 1);
+	// line = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	line = malloc(sizeof(char) * 999999);
 	while (n > 0)
 	{
@@ -39,5 +40,6 @@ int	main(void)
 
 	fd = open("sample.txt", O_RDONLY);
 	printf("%d\n", fd);
+	// printf("%d\n", BUFFER_SIZE);
 	printf("%s\n", get_next_line(fd));
 }

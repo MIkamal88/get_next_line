@@ -18,8 +18,12 @@
 # include <stdio.h> // to be removed
 # include <fcntl.h>
 
+// # ifndef BUFFER_SIZE
+// #define BUFFER_SIZE 1000
+
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 char	*get_next_line(int fd);
 
+// #endif
 #endif
