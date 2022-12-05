@@ -35,7 +35,7 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
-	int		fd;
+	int	fd;
 
 	fd = open("sample.txt", O_RDONLY);
 	printf("%d\n", fd);
