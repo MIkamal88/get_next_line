@@ -1,0 +1,6 @@
+Get_Next_Line @ 42
+	This is just a sample text program.
+	The purpose of this program is to assist the user finishing the getnextline program of 42.
+	If this works then you did good work
+	Best of luck!
+	Mshehata.
