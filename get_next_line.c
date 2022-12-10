@@ -12,27 +12,55 @@
 
 #include "get_next_line.h"
 
+size_t	find_endingpoint(const char *line, int index)
+{
+	static size_t	i;
+
+	if (index == 0)
+		i = 0;
+	i += 1;
+	while (line[index] != '\n')
+	{
+		if (line[index + 1] == '\n' || line[index + 1] == '\0')
+		{
+			i += 1;
+			return (i);
+		}
+		i++;
+		index++;
+	}
+	return (i);
+}
+
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	*line;
-	int		n;
-	int		i;
-	size_t	buf_size;
+	static char		*line;
+	static size_t	index;
+	char			*buffer;
+	char			*print_out;
+	size_t			buf_size;
+	size_t			index_2;
 
-	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (0);
 	buf_size = (size_t)BUFFER_SIZE;
-	buffer = malloc(sizeof(char) * (buf_size + 1));
-	line = malloc(1);
-	// n = read(fd, buffer, buf_size);
-	while (!ft_strchr(line, '\n'))
+	buffer = malloc(sizeof(char) * (buf_size));
+	if (!buffer)
+		return (0);
+	if (!line)
 	{
-		n = read(fd, buffer, buf_size);
+		line = malloc(1);
+		index = 0;
+	}
+	while (!ft_strchr(buffer, '\n'))
+	{
+		read(fd, buffer, buf_size);
 		line = ft_strjoin(line, buffer);
 	}
-	return (line);
+	index_2 = find_endingpoint(line, index);
+	print_out = ft_substr(line, index, (index_2 - index));
+	index = index_2;
+	return (print_out);
 }
 
 int	main(void)
@@ -41,5 +69,32 @@ int	main(void)
 
 	fd = open("sample.txt", O_RDONLY);
 	printf("%s\n", get_next_line(fd));
-	// printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
 }
