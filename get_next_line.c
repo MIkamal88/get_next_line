@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*jline_fbuff(char *buffer, char *buf)
+char	*join_line(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -84,7 +84,7 @@ char	*file_read(int fd, char *res)
 			return (NULL);
 		}
 		buffer[byte_read] = 0;
-		res = jline_fbuff(res, buffer);
+		res = join_line(res, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
