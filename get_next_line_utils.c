@@ -62,20 +62,22 @@ void	ft_bzero(void *s, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		str[i] = '\0';
+		str[i] = 0;
 		i++;
 	}
 }
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*res;
+	void	*arr;
 
-	res = malloc(elementSize * elementCount);
-	if (!res)
+	if (size && SIZE_MAX / size < nmemb)
 		return (NULL);
-	ft_bzero(res, elementSize * elementCount);
-	return (res);
+	arr = malloc(nmemb * size);
+	if (!arr)
+		return (NULL);
+	ft_bzero(arr, (nmemb * size));
+	return (arr);
 }
 
 size_t	ft_strlen(const char *theString)
